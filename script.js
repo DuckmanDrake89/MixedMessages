@@ -2,41 +2,31 @@ const randomNum = num => {
     return Math.floor(Math.random() * num);
 }
 
+const nameItems = {
+    title : ['Lord','Sir','Lady','King', 'Queen', 'Joker'],
+    name : ['Lee','Mike','Dave','Sam','Ryan'],
+    honor : ['True','Brave','Mighty','Lost','Confused','Broken','Allmighty','Dead'],
+    from : ['Camelot', 'Sussex', 'Scotland', 'Wessex', 'London','Winchester']
+}
 
-const generateName = () => {
+let finalMessage = [];
 
-    const nameItems = {
-        title : ['Lord','Sir','Lady','King', 'Queen', 'Joker'],
-        name : document.getElementById("user").value,
-        honor : ['True','Brave','Mighty','Lost','Confused','Broken','Allmighty','Dead'],
-        from : ['Camelot', 'Sussex', 'Scotland', 'Wessex', 'London','Winchester']
-    }
-
-    if (document.getElementById("user").value === '') {
-        return alert('Please enter a name')
-    }
-
-    let finalMessage = [];
-
-    for (let item in nameItems) {
-        let itemIndex = randomNum(nameItems[item].length)
-        switch(item) {
+for (let item in nameItems) {
+    let itemIndex = randomNum(nameItems[item].length)
+    switch(item) {
         case 'title':
             finalMessage.push(`${nameItems[item][itemIndex]}`) 
             break
         case 'name':
-            finalMessage.push(`${nameItems[item]}`)
+            finalMessage.push(`${nameItems[item][itemIndex]}`)
             break
         case 'honor':
             finalMessage.push(`the ${nameItems[item][itemIndex]},`)
             break
         case 'from':
             finalMessage.push(`of ${nameItems[item][itemIndex]}.`)
-        }
+            break
     }
-    
-    document.getElementById("demo").innerHTML = finalMessage.join(' ');
-    alert(finalMessage.join(' '));
 }
 
-console.log(generateName());
+console.log(finalMessage.join(' '));
